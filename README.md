@@ -14,6 +14,7 @@ Obstacle-avoiding cars are compact robotic vehicles equipped with sensors, often
 - Motor driver
 - ESP8266
 - DC motor
+  
 ![Picture2](https://github.com/Vivekvyas23/Object_avoiding_car/assets/147385378/0517f638-69e6-4f8e-880c-16211bf9922a)
 
 ## Code
