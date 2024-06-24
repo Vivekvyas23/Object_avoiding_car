@@ -1,1 +1,63 @@
-hi
+//declaration for ultrasonic
+#define trigPin 12
+#define echoPin 14
+#include <Servo.h>
+
+Servo myservo;
+
+//for distance, depedende kung ano kailangan
+int cm = 0;
+//Motor A
+const int motorPin1  = 16;  // Pin 14 of L293
+const int motorPin2  = 5;  // Pin 10 of L293
+//Motor B
+const int motorPin3  = 4; // Pin  7 of L293
+const int motorPin4  = 0;  // Pin  2 of L293
+
+void setup() {
+  Serial.begin(9600);                 //Serial Monitor setup
+  pinMode(trigPin, OUTPUT);           //trigger as OUTPUT
+  pinMode(echoPin, INPUT);            //echo as INPUT
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);
+  myservo.attach(2); // attaches the servo on pin 9 to the servo object
+  myservo.write(135);
+}
+
+void loop() {
+  digitalWrite(trigPin, LOW);
+  delay(100);
+  
+  digitalWrite(trigPin, HIGH);
+  delay(100);
+  digitalWrite(trigPin, LOW);
+  
+  int duration = pulseIn(echoPin, HIGH);
+  
+  cm = duration * 0.034 / 2;
+  Serial.print("Distance cm = ");
+  Serial.println(cm);
+  //delay(500);
+
+  analogWrite(motorPin1, 180);
+  analogWrite(motorPin2, 0);
+  analogWrite(motorPin3, 180);
+  analogWrite(motorPin4, 0);
+
+  if(cm<80)
+  {
+  analogWrite(motorPin1, 105);
+  analogWrite(motorPin2, 0);
+  analogWrite(motorPin3, 240);
+  analogWrite(motorPin4, 0);
+  myservo.write(180);
+  Serial.print("HI");                  // sets the servo position according to the scaled value
+  delay(12000);
+  myservo.write(135); 
+  Serial.print("RETURN");                 // sets the servo position according to the scaled value
+  }
+
+
+}
