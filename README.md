@@ -19,7 +19,7 @@ Obstacle-avoiding cars are compact robotic vehicles equipped with sensors, often
 
 ## Code
 
-- [code.ino](https://www.github.com/code.ino)
+- [code.ino](https://github.com/Vivekvyas23/Object_avoiding_car/blob/main/Code)
 
 ## Authors
 
